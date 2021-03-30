@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PlaylistComponent } from './components/playlist/playlist.component';
 
 const routes: Routes = [
-  { path: 'playlist', component: PlaylistComponent }
+  { path: 'playlists', component: PlaylistComponent }
 ];
 
 @NgModule({
