@@ -1,0 +1,7 @@
+<form (ngSubmit)='createPlaylist();' [formGroup]='playlistForm' novalidate class="form">
+    <input formControlName='title'
+           type="text"
+           class="form-control"
+           placeholder="Enter title" />
+    <button [disabled]='playlistForm.invalid' class="btn btn-warning btn-sm" type="submit">Create</button>
+</form>
