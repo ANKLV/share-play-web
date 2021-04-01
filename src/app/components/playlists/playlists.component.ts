@@ -28,10 +28,11 @@ export class PlaylistsComponent implements OnInit {
   }
 
   deletePlaylist(id: number) {
-    this.playlistAPI.delete(id).subscribe(() => {
-    this.playlists = this.playlists.filter((data:any) => data.id !== id);
-    }, (error) => {
-      console.log('error', error);
+    if (confirm("Are you sure?"))
+      this.playlistAPI.delete(id).subscribe(() => {
+      this.playlists = this.playlists.filter((data:any) => data.id !== id);
+      }, (error) => {
+      console.log('error', error)
     })
   }
 }
