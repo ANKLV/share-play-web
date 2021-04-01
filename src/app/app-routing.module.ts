@@ -4,7 +4,7 @@ import { PlaylistsComponent } from './components/playlists/playlists.component';
 
 const routes: Routes = [
   { path: '' , redirectTo: 'playlists', pathMatch: 'full' },
-  { path: 'playlists', component: PlaylistsComponent },
+  { path: 'playlists', component: PlaylistsComponent }
 ];
 
 @NgModule({

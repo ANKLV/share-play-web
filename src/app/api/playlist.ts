@@ -16,4 +16,9 @@ export class PlaylistAPI {
   create(params:any) {
     return this.http.post(`${environment.apiEndpoint}/api/v1/playlists`, params);
   }
+
+  delete(id:number) {
+    console.log()
+    return this.http.delete(`${environment.apiEndpoint}/api/v1/playlists/${id}`)
+  }
 }
