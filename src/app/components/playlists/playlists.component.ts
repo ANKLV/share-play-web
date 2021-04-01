@@ -22,4 +22,8 @@ export class PlaylistsComponent implements OnInit {
       console.log('error', error);
     })
   }
+
+  onCreatePlaylist(playlist:any) {
+    this.playlists.push(playlist);
+  }
 }
