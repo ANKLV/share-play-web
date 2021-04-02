@@ -18,7 +18,6 @@ export class PlaylistAPI {
   }
 
   delete(id:number) {
-    console.log()
-    return this.http.delete(`${environment.apiEndpoint}/api/v1/playlists/${id}`)
+    return this.http.delete(`${environment.apiEndpoint}/api/v1/playlists/${id}`);
   }
 }
