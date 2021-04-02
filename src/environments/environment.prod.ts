@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiEndpoint: 'Change ME'
+  apiEndpoint: 'https://share-play-api.herokuapp.com/'
 };
