@@ -8,12 +8,16 @@ import { AppComponent } from './app.component';
 import { PlaylistsComponent } from './components/playlists/playlists.component';
 import { ApiModule } from './api/api.module';
 import { PlaylistFormComponent } from './components/playlist-form/playlist-form.component';
+import { TrackComponent } from './components/track/track.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlaylistsComponent,
-    PlaylistFormComponent
+    PlaylistFormComponent,
+    TrackComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
