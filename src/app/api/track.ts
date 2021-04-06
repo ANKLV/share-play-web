@@ -10,14 +10,14 @@ export class TrackAPI {
   constructor(private http: HttpClient) {  }
 
   query(params = {}) {
-    return this.http.get(`${environment.apiEndpoint}/api/v1/track`, { params: params });
+    return this.http.get(`${environment.apiEndpoint}/api/v1/tracks`, { params: params });
   }
 
   create(params:any) {
-    return this.http.post(`${environment.apiEndpoint}/api/v1/track`, params);
+    return this.http.post(`${environment.apiEndpoint}/api/v1/tracks`, params);
   }
 
   delete(id:number) {
-    return this.http.delete(`${environment.apiEndpoint}/api/v1/track/${id}`);
+    return this.http.delete(`${environment.apiEndpoint}/api/v1/tracks/${id}`);
   }
 }

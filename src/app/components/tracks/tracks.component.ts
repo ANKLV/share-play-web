@@ -3,11 +3,11 @@ import { TrackAPI } from '../../api';
 
 @Component({
   selector: 'app-track',
-  templateUrl: './track.component.html',
-  styleUrls: ['./track.component.scss']
+  templateUrl: './tracks.component.html',
+  styleUrls: ['./tracks.component.scss']
 })
-export class TrackComponent implements OnInit {
-  track:any = [];
+export class TracksComponent implements OnInit {
+  tracks:any = [];
 
   constructor(private trackAPI: TrackAPI) { }
 
@@ -17,20 +17,20 @@ export class TrackComponent implements OnInit {
 
     loadTracks() {
       this.trackAPI.query().subscribe((data) => {
-        this.track = data;
+        this.tracks = data;
       }, (error) => {
         console.log('error', error);
       })
     }
 
     onCreateTrack(track:any) {
-      this.track.push(track);
+      this.tracks.push(track);
     }
 
     deleteTrack(id: number) {
       if (confirm("Are you sure?"))
         this.trackAPI.delete(id).subscribe(() => {
-        this.track = this.track.filter((data:any) => data.id !== id);
+        this.tracks = this.tracks.filter((data:any) => data.id !== id);
         }, (error) => {
         console.log('error', error)
       })
