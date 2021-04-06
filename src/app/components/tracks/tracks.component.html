@@ -12,11 +12,24 @@
    <tbody>
      <tr *ngFor="let track of tracks; let index = index">
        <th scope="row">{{index + 1}}</th>
-       <td>{{track.name}}</td>
-       <td>{{track.artist}}</td>
-       <td>{{track.duration}}</td>
        <td>
-         <button (click)="deleteTrack(track.id)" class="btn btn-danger btn-sm" type="button">Delete</button>
+         <span *ngIf="!track.edit">
+           {{track.name}}
+         </span>
+         <input *ngIf="track.edit" [(ngModel)]="track.name" type="text" class="form-control">
+       </td>
+       <td>
+         <span *ngIf="!track.edit">
+         {{track.artist}}
+       </span>
+       <input *ngIf="track.edit" [(ngModel)]="track.artist" type="text" class="form-control">
+     </td>
+       <td>{{track.duration}}</td>
+       <td class="btn-group">
+         <button *ngIf="!track.edit" (click)="deleteTrack(track.id)" class="btn btn-danger btn-sm" type="button">Delete</button>
+         <button *ngIf="!track.edit" (click)="track.edit = true;" class="btn btn-success btn-sm" type="button">Edit</button>
+         <button *ngIf="track.edit" (click)="track.edit = false;" class="btn btn-warning btn-sm" type="button">Cancel</button>
+         <button *ngIf="track.edit" (click)="updateTrack(track)" class="btn btn-success btn-sm" type="button">Save</button>
        </td>
      </tr>
    </tbody>

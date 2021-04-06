@@ -35,4 +35,10 @@ export class TracksComponent implements OnInit {
         console.log('error', error)
       })
     }
+
+    updateTrack(track:any) {
+      this.trackAPI.update(track.id, {track}).subscribe(() => {
+        track.edit = false;
+      })
+    }
   }
