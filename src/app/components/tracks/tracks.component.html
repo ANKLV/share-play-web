@@ -1,0 +1,37 @@
+<div style="padding:20px">
+  <app-track-form (onCreate)="onCreateTrack($event);"></app-track-form>
+  <table class="table table-dark table-striped">
+   <thead>
+     <tr>
+       <th scope="col">#</th>
+       <th scope="col">Name</th>
+       <th scope="col">Artist</th>
+       <th scope="col">Duration</th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let track of tracks; let index = index">
+       <th scope="row">{{index + 1}}</th>
+       <td>
+         <span *ngIf="!track.edit">
+           {{track.name}}
+         </span>
+         <input *ngIf="track.edit" [(ngModel)]="track.name" type="text" class="form-control">
+       </td>
+       <td>
+         <span *ngIf="!track.edit">
+         {{track.artist}}
+       </span>
+       <input *ngIf="track.edit" [(ngModel)]="track.artist" type="text" class="form-control">
+     </td>
+       <td>{{track.duration}}</td>
+       <td class="btn-group">
+         <button *ngIf="!track.edit" (click)="deleteTrack(track.id)" class="btn btn-danger btn-sm" type="button">Delete</button>
+         <button *ngIf="!track.edit" (click)="track.edit = true;" class="btn btn-success btn-sm" type="button">Edit</button>
+         <button *ngIf="track.edit" (click)="track.edit = false;" class="btn btn-warning btn-sm" type="button">Cancel</button>
+         <button *ngIf="track.edit" (click)="updateTrack(track)" class="btn btn-success btn-sm" type="button">Save</button>
+       </td>
+     </tr>
+   </tbody>
+  </table>
+</div>
