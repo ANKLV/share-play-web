@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TrackAPI } from '../../api';
+import * as WaveSurfer from 'wavesurfer.js';
 
 @Component({
   selector: 'app-track',
@@ -8,11 +9,18 @@ import { TrackAPI } from '../../api';
 })
 export class TracksComponent implements OnInit {
   tracks:any = [];
+  wavesurfer:any;
 
   constructor(private trackAPI: TrackAPI) { }
 
     ngOnInit(): void {
       this.loadTracks();
+      this.wavesurfer = WaveSurfer.create({
+        container: '#waveform'
+      });
+      this.wavesurfer.on('ready', () => {
+        this.wavesurfer.play();
+      });
     }
 
     loadTracks() {
@@ -40,5 +48,13 @@ export class TracksComponent implements OnInit {
       this.trackAPI.update(track.id, {track}).subscribe(() => {
         track.edit = false;
       })
+    }
+
+    play(track:any) {
+      this.wavesurfer.load(track.url)
+    }
+
+    pause() {
+      this.wavesurfer.pause();
     }
   }
