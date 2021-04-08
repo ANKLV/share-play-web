@@ -51,8 +51,13 @@ export class TracksComponent implements OnInit {
     }
 
     play(track:any) {
-      this.wavesurfer.load(track.url);
       track.play = true;
+      this.wavesurfer.load(track.url);
+      this.tracks.forEach((item:any) => {
+        if (item.id != track.id) {
+          item.play = false;
+        }
+      })
     }
 
     pause(track:any) {
