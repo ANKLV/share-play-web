@@ -51,10 +51,12 @@ export class TracksComponent implements OnInit {
     }
 
     play(track:any) {
-      this.wavesurfer.load(track.url)
+      this.wavesurfer.load(track.url);
+      track.play = true;
     }
 
-    pause() {
-      this.wavesurfer.pause();
+    pause(track:any) {
+      this.wavesurfer.pause(track);
+      track.play = false;
     }
   }
