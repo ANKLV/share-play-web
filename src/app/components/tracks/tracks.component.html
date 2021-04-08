@@ -15,8 +15,8 @@
      <tr *ngFor="let track of tracks; let index = index">
        <th scope="row">{{index + 1}}</th>
        <td>
-         <button *ngIf="!track.play" (click)="play(track)" class="btn btn-danger btn-sm" type="button"><i class="bi bi-caret-right"></i></button>
-         <button *ngIf="track.play"(click)="pause(track)" class="btn btn-danger btn-sm" type="button"><i class="bi bi-pause-fill"></i></button>
+         <button *ngIf="!track.play" (click)="play(track)" class="btn btn-secondary btn-sm" type="button"><i class="bi bi-caret-right"></i></button>
+         <button *ngIf="track.play"(click)="pause(track)" class="btn btn-secondary btn-sm" type="button"><i class="bi bi-pause-fill"></i></button>
        </td>
        <td>
          <span *ngIf="!track.edit">
@@ -33,7 +33,7 @@
        <td>{{track.duration}}</td>
        <td class="btn-group">
          <button *ngIf="!track.edit" (click)="deleteTrack(track.id)" class="btn btn-danger btn-sm" type="button">Delete</button>
-         <button *ngIf="!track.edit" (click)="track.edit = true;" class="btn btn-success btn-sm" type="button">Edit</button>
+         <button *ngIf="!track.edit" (click)="track.edit = true;" class="btn btn-info btn-sm" type="button">Edit</button>
          <button *ngIf="track.edit" (click)="track.edit = false;" class="btn btn-warning btn-sm" type="button">Cancel</button>
          <button *ngIf="track.edit" (click)="updateTrack(track)" class="btn btn-success btn-sm" type="button">Save</button>
        </td>
