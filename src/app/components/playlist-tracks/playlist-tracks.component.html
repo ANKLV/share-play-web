@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div style="padding:20px">
+      <table class="table table-dark table-striped">
+       <thead>
+         <tr>
+           <th scope="col">№</th>
+           <th scope="col"></th>
+           <th scope="col">Name</th>
+           <th scope="col">Artist</th>
+           <th scope="col">Duration</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let playlistTrack of playlistsTracks; let index = index">
+           <th scope="row">{{index + 1}}</th>
+           <td>
+             <span *ngIf="!playlistTrack.edit">
+               {{playlistTrack.name}}
+             </span>
+             <input *ngIf="playlistTrack.edit" [(ngModel)]="playlistTrack.name" type="text" class="form-control">
+           </td>
+           <td>
+             <span *ngIf="!playlistTrack.edit">
+             {{playlistTrack.artist}}
+           </span>
+           <input *ngIf="playlistTrack.edit" [(ngModel)]="playlistTrack.artist" type="text" class="form-control">
+         </td>
+           <td>{{playlistTrack.duration}}</td>
+           <td class="btn-group">
+             <button *ngIf="!playlistTrack.edit" (click)="deletePlaylistTrack(playlistTrack.id)" class="btn btn-danger btn-sm" type="button">Delete</button>
+             <button *ngIf="!playlistTrack.edit" (click)="playlistTrack.edit = true;" class="btn btn-info btn-sm" type="button">Edit</button>
+             <button *ngIf="playlistTrack.edit" (click)="playlistTrack.edit = false;" class="btn btn-warning btn-sm" type="button">Cancel</button>
+             <button *ngIf="playlistTrack.edit" (click)="updatePlaylistTrack(playlistTrack)" class="btn btn-success btn-sm" type="button">Save</button>
+           </td>
+         </tr>
+       </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+  </div>
+</div>

@@ -35,4 +35,10 @@ export class PlaylistsComponent implements OnInit {
       console.log('error', error)
     })
   }
+
+  updatePlaylist(playlist:any) {
+    this.playlistAPI.update(playlist.id, {playlist}).subscribe(() => {
+      playlist.edit = false;
+    })
+  }
 }
