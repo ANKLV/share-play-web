@@ -12,6 +12,7 @@ import { TracksComponent } from './components/tracks/tracks.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TrackFormComponent } from './components/track-form/track-form.component';
 import { PlaylistTracksComponent } from './components/playlist-tracks/playlist-tracks.component';
+import { TrackSearchComponent } from './components/track-search/track-search.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PlaylistTracksComponent } from './components/playlist-tracks/playlist-t
     TracksComponent,
     NavbarComponent,
     TrackFormComponent,
-    PlaylistTracksComponent
+    PlaylistTracksComponent,
+    TrackSearchComponent
   ],
   imports: [
     BrowserModule,

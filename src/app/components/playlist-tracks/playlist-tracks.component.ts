@@ -51,8 +51,10 @@ export class PlaylistTracksComponent implements OnInit {
     })
   }
 
-  loadTracks() {
-    this.trackAPI.query().subscribe((data) => {
+  loadTracks(query?:any) {
+    const params = query ? {query: query} : {};
+    
+    this.trackAPI.query(params).subscribe((data) => {
       this.tracks = data;
     }, (error) => {
       console.log('error', error);
