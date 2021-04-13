@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { PlaylistTrackAPI } from '../../api';
 import { PlaylistAPI } from '../../api';
 import { TrackAPI } from '../../api';
-
-
 
 @Component({
   selector: 'app-playlist-tracks',
@@ -12,18 +12,23 @@ import { TrackAPI } from '../../api';
 })
 export class PlaylistTracksComponent implements OnInit {
   playlistsTracks:any = [];
+  playkists:any = [];
+  tracks:any = [];
+  playlistId:any;
 
-  constructor(private playlistTrackAPI: PlaylistTrackAPI) { }
+  constructor(private playlistTrackAPI: PlaylistTrackAPI, private trackAPI: TrackAPI, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.loadPlaylistTracks();
+    this.playlistId = this.route.snapshot.paramMap.get('id');
+    this.loadPlaylistTracks(this.playlistId);
+    this.loadTracks();
   }
 
-  loadPlaylistTracks() {
-    this.playlistTrackAPI.query().subscribe((data) => {
+  loadPlaylistTracks(playlistId:any) {
+    this.playlistTrackAPI.query({playlist_id: playlistId}).subscribe((data) => {
       this.playlistsTracks = data;
+      console.log('error', data);
     }, (error) => {
-      console.log('error', error);
     })
   }
 
@@ -43,6 +48,20 @@ export class PlaylistTracksComponent implements OnInit {
   updatePlaylistTrack(playlistTrack:any) {
     this.playlistTrackAPI.update(playlistTrack.id, {playlistTrack}).subscribe(() => {
       playlistTrack.edit = false;
+    })
+  }
+
+  loadTracks() {
+    this.trackAPI.query().subscribe((data) => {
+      this.tracks = data;
+    }, (error) => {
+      console.log('error', error);
+    })
+  }
+
+  addTrack(track:any) {
+    this.playlistTrackAPI.create({playlist_track: {track_id: track.id, playlist_id: this.playlistId }}).subscribe((data) => {
+    this.playlistsTracks.push(data);
     })
   }
 }

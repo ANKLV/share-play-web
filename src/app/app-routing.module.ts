@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '' , redirectTo: 'playlists', pathMatch: 'full' },
   { path: 'playlists', component: PlaylistsComponent },
   { path: 'tracks', component: TracksComponent },
-  { path: 'playlist-tracks', component: PlaylistTracksComponent }
+  { path: 'playlists/:id/tracks', component: PlaylistTracksComponent }
 ];
 
 @NgModule({
