@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import * as WaveSurfer from 'wavesurfer.js';
 
 import { PlaylistTrackAPI } from '../../api';
 import { PlaylistAPI } from '../../api';
@@ -12,7 +13,7 @@ import { TrackAPI } from '../../api';
 })
 export class PlaylistTracksComponent implements OnInit {
   playlistsTracks:any = [];
-  playkists:any = [];
+  playlists:any = [];
   tracks:any = [];
   playlistId:any;
 
@@ -53,7 +54,7 @@ export class PlaylistTracksComponent implements OnInit {
 
   loadTracks(query?:any) {
     const params = query ? {query: query} : {};
-    
+
     this.trackAPI.query(params).subscribe((data) => {
       this.tracks = data;
     }, (error) => {
