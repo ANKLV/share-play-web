@@ -30,10 +30,12 @@
      </td>
        <td>{{track.duration}}</td>
        <td class="btn-group">
-         <button *ngIf="editButton" (click)="onDelete.emit(track.id)" class="btn btn-danger btn-sm" type="button">Delete</button>
-         <button *ngIf="editButton" (click)="track.edit = true;" class="btn btn-info btn-sm" type="button">Edit</button>
-         <button *ngIf="track.edit" (click)="track.edit = false;" class="btn btn-warning btn-sm" type="button">Cancel</button>
-         <button *ngIf="track.edit" (click)="onUpdate.emit(track)" class="btn btn-success btn-sm" type="button">Save</button>
+         <div *ngIf="editButton">
+           <button *ngIf="!track.edit" (click)="onDelete.emit(track.id)" class="btn btn-danger btn-sm" type="button">Delete</button>
+           <button *ngIf="!track.edit" (click)="track.edit = true;" class="btn btn-info btn-sm" type="button">Edit</button>
+           <button *ngIf="track.edit" (click)="track.edit = false;" class="btn btn-warning btn-sm" type="button">Cancel</button>
+           <button *ngIf="track.edit" (click)="onUpdate.emit(track)" class="btn btn-success btn-sm" type="button">Save</button>
+         </div>
          <button *ngIf="showAddButton"(click)="onAdd.emit(track)" class="btn btn-success btn-sm" type="button">Add</button>
        </td>
      </tr>
