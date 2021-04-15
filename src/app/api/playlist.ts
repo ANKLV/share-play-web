@@ -20,4 +20,8 @@ export class PlaylistAPI {
   delete(id:number) {
     return this.http.delete(`${environment.apiEndpoint}/api/v1/playlists/${id}`);
   }
+
+  update(id:number, params = {}) {
+    return this.http.patch(`${environment.apiEndpoint}/api/v1/playlists/${id}`, params);
+  }
 }

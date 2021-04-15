@@ -15,12 +15,6 @@ export class TracksComponent implements OnInit {
 
     ngOnInit(): void {
       this.loadTracks();
-      this.wavesurfer = WaveSurfer.create({
-        container: '#waveform'
-      });
-      this.wavesurfer.on('ready', () => {
-        this.wavesurfer.play();
-      });
     }
 
     loadTracks() {
@@ -48,20 +42,5 @@ export class TracksComponent implements OnInit {
       this.trackAPI.update(track.id, {track}).subscribe(() => {
         track.edit = false;
       })
-    }
-
-    play(track:any) {
-      track.play = true;
-      this.wavesurfer.load(track.url);
-      this.tracks.forEach((item:any) => {
-        if (item.id != track.id) {
-          item.play = false;
-        }
-      })
-    }
-
-    pause(track:any) {
-      this.wavesurfer.pause(track);
-      track.play = false;
     }
   }
