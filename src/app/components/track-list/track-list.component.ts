@@ -14,6 +14,11 @@ export class TrackListComponent {
   @Input() showAddButton = false;
   @Input() editButton = true;
   wavesurfer:any;
+  currentTrack:any;
+
+  get currentTrackIndex() {
+    return this.tracks.map((track:any) => track.id).indexOf(this.currentTrack.id);
+  }
 
   ngOnInit(): void {
     this.wavesurfer = WaveSurfer.create({
@@ -22,10 +27,17 @@ export class TrackListComponent {
     this.wavesurfer.on('ready', () => {
       this.wavesurfer.play();
     });
+    this.wavesurfer.on('finish', () => {
+      if (this.currentTrackIndex !==-1 && this.tracks.length - 1 > this.currentTrackIndex){
+        const nextTrack = this.tracks[this.currentTrackIndex + 1];
+        this.play(nextTrack);
+      }
+    });
   }
 
   play(track:any) {
     track.play = true;
+    this.currentTrack = track;
     this.wavesurfer.load(track.url);
     this.tracks.forEach((item:any) => {
       if (item.id != track.id) {
