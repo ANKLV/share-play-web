@@ -15,6 +15,7 @@ export class PlaylistTracksComponent implements OnInit {
   playlistsTracks:any = [];
   playlists:any = [];
   tracks:any = [];
+  plTracks:any = [];
   playlistId:any;
 
   constructor(private playlistTrackAPI: PlaylistTrackAPI, private trackAPI: TrackAPI, private route: ActivatedRoute) { }
@@ -28,6 +29,7 @@ export class PlaylistTracksComponent implements OnInit {
   loadPlaylistTracks(playlistId:any) {
     this.playlistTrackAPI.query({playlist_id: playlistId}).subscribe((data) => {
       this.playlistsTracks = data;
+      this.plTracks = this.playlistsTracks.map((track:any) => track.track)
       console.log('error', data);
     }, (error) => {
     })
