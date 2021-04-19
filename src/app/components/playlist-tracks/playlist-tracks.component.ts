@@ -70,7 +70,6 @@ export class PlaylistTracksComponent implements OnInit {
     this.playlistTrackAPI.create({playlist_track: {track_id: track.id, playlist_id: this.playlistId }}).subscribe((data:any) => {
     this.playlistsTracks.push(data);
     this.plTracks.push(data.track);
-    console.log()
     })
   }
 }
