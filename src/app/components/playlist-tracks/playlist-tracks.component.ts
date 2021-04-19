@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import * as WaveSurfer from 'wavesurfer.js';
 
 import { PlaylistTrackAPI } from '../../api';
 import { PlaylistAPI } from '../../api';
@@ -39,10 +38,13 @@ export class PlaylistTracksComponent implements OnInit {
     this.playlistsTracks.push(playlistTrack);
   }
 
-  deletePlaylistTrack(id: number) {
+  deletePlaylistTrack(trackId: number) {
+    const playlistTrack = this.playlistsTracks.find((playlistsTrack:any) => playlistsTrack.track_id == trackId)
+
     if (confirm("Are you sure?"))
-      this.playlistTrackAPI.delete(id).subscribe(() => {
-      this.playlistsTracks = this.playlistsTracks.filter((data:any) => data.id !== id);
+      this.playlistTrackAPI.delete(playlistTrack.id).subscribe(() => {
+      this.playlistsTracks = this.playlistsTracks.filter((data:any) => data.id !== playlistTrack.id);
+      this.plTracks = this.playlistsTracks.map((track:any) => track.track);
       }, (error) => {
       console.log('error', error)
     })
@@ -65,8 +67,10 @@ export class PlaylistTracksComponent implements OnInit {
   }
 
   addTrack(track:any) {
-    this.playlistTrackAPI.create({playlist_track: {track_id: track.id, playlist_id: this.playlistId }}).subscribe((data) => {
+    this.playlistTrackAPI.create({playlist_track: {track_id: track.id, playlist_id: this.playlistId }}).subscribe((data:any) => {
     this.playlistsTracks.push(data);
+    this.plTracks.push(data.track);
+    console.log()
     })
   }
 }

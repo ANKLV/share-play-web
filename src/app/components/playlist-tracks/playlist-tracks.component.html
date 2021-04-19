@@ -9,9 +9,9 @@
 </div>
 <div class="row" style="padding:10px">
   <div class="col-sm-6">
-    <app-track-list [editButton]="false" [tracks]="plTracks" ></app-track-list>
+    <app-track-list [editButton]="false" [showDeleteButton]="true" [tracks]="plTracks" (onDelete)="deletePlaylistTrack($event);" ></app-track-list>
   </div>
   <div class="col-sm-6">
-    <app-track-list [editButton]="false" [showAddButton]="true" [tracks]="tracks" (onAdd)="addTrack($event);"></app-track-list>
+    <app-track-list [editButton]="false" [showAddButton]="true" [showDeleteButton]="false" [tracks]="tracks" (onAdd)="addTrack($event);"></app-track-list>
   </div>
 </div>

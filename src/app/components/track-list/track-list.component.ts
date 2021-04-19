@@ -13,6 +13,7 @@ export class TrackListComponent {
   @Input() tracks:any = [];
   @Input() showAddButton = false;
   @Input() editButton = true;
+  @Input() showDeleteButton = true;
   wavesurfer:any;
   currentTrack:any;
 
