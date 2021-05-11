@@ -1,7 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserAPI } from '../../api';
-import { ToastrService } from 'ngx-toastr';
 import { Toastr } from "../../providers"
 
 @Component({
