@@ -31,8 +31,4 @@ export class SignUpComponent {
   showSuccess() {
     this.toastr.success("Registered");
   }
-
-  showError() {
-    this.toastr.error("Registered");
-  }
 }
