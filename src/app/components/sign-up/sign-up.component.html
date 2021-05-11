@@ -1,10 +1,19 @@
-<form (ngSubmit)='createUser();' [formGroup]='userForm' novalidate>
-  <div class="input-group mb-3">
-    <input formControlName='nickname' type="text" class="form-control" aria-label="Enter your nickname">
-    <input formControlName='email' type="email" class="form-control" aria-label="Enter your email">
-    <input formControlName='password_digest' type="password" class="form-control" aria-label="Enter your password">
+<div class="input-group mb-3">
+  <form (ngSubmit)='createUser();' [formGroup]='userForm' novalidate>
+    <div class="mb-3">
+      <label for="nickname" class="form-label">Nickname</label>
+      <input formControlName='nickname' type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input formControlName='email' type="email" class="form-control" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+        <label for="password_digest" class="form-label">Password</label>
+        <input formControlName='password_digest' type="password" class="form-control"><br>
+    </div>
     <div class="input-group-append">
       <button [disabled]='userForm.invalid' class="btn btn-success btn-sm" type="submit">Register</button>
     </div>
-  </div>
-</form>
+  </form>
+</div>
