@@ -1,4 +1,4 @@
-<div class="input-group mb-3">
+<div class="input-group mb-3" style="width:300px; margin: auto;">
   <form (ngSubmit)='createUser();' [formGroup]='userForm' novalidate>
     <div class="mb-3">
       <label for="nickname" class="form-label">Nickname</label>
@@ -10,7 +10,7 @@
     </div>
     <div class="mb-3">
         <label for="password_digest" class="form-label">Password</label>
-        <input formControlName='password_digest' type="password" class="form-control"><br>
+        <input formControlName='password' type="password" class="form-control"><br>
     </div>
     <div class="input-group-append">
       <button [disabled]='userForm.invalid' class="btn btn-success btn-sm" type="submit">Register</button>
