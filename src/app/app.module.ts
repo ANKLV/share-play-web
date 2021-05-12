@@ -14,6 +14,10 @@ import { TrackFormComponent } from './components/track-form/track-form.component
 import { PlaylistTracksComponent } from './components/playlist-tracks/playlist-tracks.component';
 import { TrackSearchComponent } from './components/track-search/track-search.component';
 import { TrackListComponent } from './components/track-list/track-list.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,8 @@ import { TrackListComponent } from './components/track-list/track-list.component
     TrackFormComponent,
     PlaylistTracksComponent,
     TrackSearchComponent,
-    TrackListComponent
+    TrackListComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,10 @@ import { TrackListComponent } from './components/track-list/track-list.component
     HttpClientModule,
     ApiModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
