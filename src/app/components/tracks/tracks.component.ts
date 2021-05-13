@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TrackAPI } from '../../api';
-import * as WaveSurfer from 'wavesurfer.js';
 
 @Component({
   selector: 'app-track',

@@ -10,11 +10,12 @@
         <a class="nav-link" [routerLink]="['/playlists']" routerLinkActive="active">Playlists</a>
       </div>
     </div>
-    <div class="navbar-nav">
+    <div *ngIf="!auth.currentUser" class="navbar-nav">
       <a class="nav-link" [routerLink]="['/sign-up']">Sign Up</a>
     </div>
     <div class="navbar-nav">
-      <a class="nav-link" [routerLink]="['/log-in']">Log In</a>
+      <a *ngIf="!auth.currentUser" class="nav-link" [routerLink]="['/log-in']">Log In</a>
+      <a *ngIf="auth.currentUser" class="nav-link" (click)="logOut()" [routerLink]="['/tracks']">Log Out</a>
     </div>
   </div>
 </nav>
