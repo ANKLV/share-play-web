@@ -19,6 +19,10 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { LogInComponent } from './components/log-in/log-in.component';
+import { Observable } from 'rxjs';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './providers/token.interceptor';
+import { ErrorInterceptor } from './providers/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -43,9 +47,18 @@ import { LogInComponent } from './components/log-in/log-in.component';
     ReactiveFormsModule,
     CommonModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [{
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
