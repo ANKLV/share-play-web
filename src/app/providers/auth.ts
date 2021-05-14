@@ -17,7 +17,7 @@ export class Auth {
   }
 
   get token() {
-    return this.currentUser?.token;
+    return this.currentUser?.auth_token;
   }
 
   signOut() {
