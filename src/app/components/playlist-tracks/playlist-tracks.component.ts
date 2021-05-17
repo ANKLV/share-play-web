@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { PlaylistTrackAPI } from '../../api';
-import { PlaylistAPI } from '../../api';
 import { TrackAPI } from '../../api';
 
 @Component({
@@ -13,6 +12,7 @@ import { TrackAPI } from '../../api';
 export class PlaylistTracksComponent implements OnInit {
   playlistsTracks:any = [];
   playlists:any = [];
+  playlist:any = {};
   tracks:any = [];
   plTracks:any = [];
   playlistId:any;
