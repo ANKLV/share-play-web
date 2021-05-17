@@ -23,7 +23,6 @@ export class SignUpComponent {
 
   createUser() {
     this.userAPI.create({user: this.userForm.value}).subscribe((data) => {
-      this.onCreate.emit(data);
       this.toastr.success("Registered");
       this.auth.updateUser(data);
       this.router.navigate(['/playlists']);

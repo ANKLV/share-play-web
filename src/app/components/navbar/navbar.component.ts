@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth } from "../../providers"
 
@@ -8,11 +8,10 @@ import { Auth } from "../../providers"
 })
 
 export class NavbarComponent {
-  @Output() onCreate = new EventEmitter<any>();
   constructor(public auth: Auth, private router: Router) { }
 
-    logOut() {
-      this.auth.signOut();
-      this.router.navigate(['/tracks']);
+  logOut() {
+    this.auth.signOut();
+    this.router.navigate(['/tracks']);
   }
 }

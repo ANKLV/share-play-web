@@ -21,10 +21,9 @@ export class LogInComponent {
   loginUser() {
     this.sessionAPI.create(this.loginForm.value).subscribe((data) => {
       this.toastr.success("Logged In");
-      this.router.navigate(['/playlists']);
       this.auth.updateUser(data);
+      this.router.navigate(['/playlists']);
     }, (error) => {
-      console.log('error', error);
       this.toastr.showResponseErrors(error)
     })
   }

@@ -21,8 +21,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { Observable } from 'rxjs';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from './providers/token.interceptor';
-import { ErrorInterceptor } from './providers/error.interceptor';
+import { TokenInterceptor, ErrorInterceptor } from './providers';
+
 
 @NgModule({
   declarations: [
