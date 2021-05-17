@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserAPI } from '../../api';
@@ -11,7 +11,6 @@ import { Auth } from "../../providers"
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent {
-  @Output() onCreate = new EventEmitter<any>();
   userForm = new FormGroup({
     email: new FormControl(null, Validators.required),
     nickname: new FormControl(null, Validators.required),
